@@ -5,13 +5,31 @@ if (empty($_SESSION['user']) || $_SESSION['user']['role'] !== 'vendeur') {
     header('Location: index.php'); exit;
 }
 $pv = $_GET['pv'] ?? $_SESSION['user']['point_of_sale'];
+
+require __DIR__ . '/../inc/db.php';
 ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <title>Espace Vendeur</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+       
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- DataTables CSS pour Bootstrap 5 -->
+    <link href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- DataTables JS -->
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+    
     <style>
         .tab-btn {
             flex: 1;
@@ -60,6 +78,7 @@ $pv = $_GET['pv'] ?? $_SESSION['user']['point_of_sale'];
             border-radius: 50%;
         }
     </style>
+   
 </head>
 <body class="bg-light">
 
@@ -106,16 +125,14 @@ $pv = $_GET['pv'] ?? $_SESSION['user']['point_of_sale'];
     <div class="container w-75 mt-4">
       <!-- Boutons onglets -->
       <div class="d-flex">
-          <button class="tab-btn active" data-tab="note">NOTE</button>
-          <button class="tab-btn" data-tab="poste">POSTE</button>
-          <button class="tab-btn" data-tab="wifi">WIFI</button>
+          <button class="tab-btn active" data-tab="note">NOTE VERSEMENT</button>
+          <button class="tab-btn" data-tab="poste">CONTROLE POSTE</button>
+          <button class="tab-btn" data-tab="wifi">CONTROLE WIFI</button>
       </div>
 
       <!-- Contenus -->
-      <div id="note" class="content-section active">
-          <h4>NOTE AFFICHAGE</h4>
-          <p>Contenu des notes ici...</p>
-      </div>
+     <?php include 'vendeur/note.php'; ?>
+
       <div id="poste" class="content-section">
           <h4>POSTE AFFICHAGE</h4>
           <p>Contenu des postes ici...</p>
