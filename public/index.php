@@ -44,8 +44,8 @@ if (!empty($_SESSION['user'])) {
             <div class="mb-3">
             <label for="point_of_sale" class="form-label">Point de vente</label>
               <select class="form-select" id="point_of_sale" name="point_of_sale" required>
-                <option value="Point de vente 1">Point de vente 1</option>
-                <option value="Point de vente 2">Point de vente 2</option>
+                <option value="Mini-croc">Mini-croc</option>
+                <option value="Tok">Tok</option>
                 <option value="Surveillance">Surveillance</option>
               </select>
             </div>

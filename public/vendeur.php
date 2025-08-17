@@ -9,6 +9,8 @@ $pv = $_GET['pv'] ?? $_SESSION['user']['point_of_sale'];
 require __DIR__ . '/../inc/db.php';
 ?>
 
+
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -81,12 +83,16 @@ require __DIR__ . '/../inc/db.php';
    
 </head>
 <body class="bg-light">
-
     <!-- Barre du haut -->
     <div class="topbar">
+       
         <div class="d-flex align-items-center">
             <img src="img/logo.JPG" alt="Lgo" height="40" class="me-2">
         </div>
+         <div class="d-flex align-items-center">
+            <h3 class="mb-0"><?= htmlspecialchars($pv) ?></h3>
+        </div>
+        
         <div class="d-flex align-items-center">
             <div class="notif-icon">
                 <span class="bi bi-bell" style="font-size:20px;"></span>
@@ -143,7 +149,7 @@ require __DIR__ . '/../inc/db.php';
       </div>
     </div>
 
-    <script>
+ <script>
         const buttons = document.querySelectorAll('.tab-btn');
         const sections = document.querySelectorAll('.content-section');
 
@@ -164,7 +170,8 @@ require __DIR__ . '/../inc/db.php';
 
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+
 
 </body>
 </html>
